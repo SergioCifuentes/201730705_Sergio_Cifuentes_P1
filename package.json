@@ -1,0 +1,19 @@
+{
+  "name": "analizador",
+  "version": "0.0.1",
+  "description": "Analizador Lexico Curso:Lenguajes de Programacion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SergioCifuentes/Analizador-Lexico-.git"
+  },
+  "author": "SergioCifuentes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SergioCifuentes/Analizador-Lexico-/issues"
+  },
+  "homepage": "https://github.com/SergioCifuentes/Analizador-Lexico-#readme"
+}
