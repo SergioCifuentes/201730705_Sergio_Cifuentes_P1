@@ -5,18 +5,20 @@ const app = express();
 
 //rutas
 app.get('/',(req,res)=>{
-    res.send('<h1>Servidor </h1>');
+    res.render('index');
 });
 
-app.get('/next',(req,res)=>{
-    res.send('<h1>Servidor2 </h1>');
+app.get('/perfil',(req,res)=>{
+    res.sendFile(__dirname+"/views/perfil.html");
 });
 //configutacion
+app.set('view engine','ejs');
+app.set('views',__dirname+"/views");
 
 app.set('port',3000);
  
 //escucha
 app.listen(app.get('port'),()=>{
     console.log('escuchando',app.get('port'))
-
+console.log(__filename);
 })

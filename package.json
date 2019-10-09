@@ -23,5 +23,5 @@
   },
   "devDependencies": {
     "nodemon": "^1.19.3"
-   }
+  }
 }
