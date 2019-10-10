@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,14 +11,22 @@
 </head>
 
 <body>
-    <h1>Analizador Lexico</h1>
-    <input type="file">
-    <button id="buttonCargar">Cargar</button>
-    <ul>
-                
-    </ul>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/Analizador-Lexico-/src/public/cargador.js"></script>
-       </body>
-</html>
+    <h1 style="text-align: center">Analizador Lexico</h1>
+    <div class="container">
 
+        <div class="custom-file" style="width: 25%">
+            <input type="file" class="custom-file-input" onchange="obtenerArchivo(this.files)" id="fileOutput" aria-describedby="inputGroupFileAddon01">
+            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
+        <button class="btn btn-dark" id="buttonCargar">Cargar</button>
+        <br>
+        <br>
+        <textarea  class="form-control" style="width:40%;display: inline"id="txt" rows="8"></textarea> &nbsp;&nbsp;&nbsp;
+        <textarea class="form-control"  style="width: 40% ;display: inline"id="resultados" rows="8"></textarea>
+
+    </div>
+    <a href="perfil.html"> Perfil</a>
+    <script src="/cargador.js"></script>
+</body>
+
+</html>
