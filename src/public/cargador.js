@@ -1,9 +1,12 @@
 const getButton = document.querySelector("#buttonCargar");
+const getButtonToken = document.querySelector("#getToken");
 const getText = document.querySelector("#texto1");
+const getText2= document.getElementById("resultados");
 
+const url = "http://localhost:3300/resultado";
 const sendData = () => {
-    axios.post('http://localhost:3000/automata', {
-            linea: getText.value,
+    axios.post('http://localhost:3300/automata', {
+            lineas: getText.value,
         }, {
             'Content-Type': 'application/json'
         })
@@ -18,6 +21,7 @@ const sendData = () => {
 const getData = () => {
     axios.get(url).then(response => {
         console.log("hola");
+        getText2.innerHTML = getText2.innerHTML  + response.data.id +" ";
     })
         .catch(error => {
             console.log(error);
@@ -40,3 +44,4 @@ function obtenerArchivo(files) {
     reader.readAsText(file);
 }
 getButton.addEventListener('click', sendData);
+getButtonToken.addEventListener('click', getData);

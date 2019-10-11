@@ -8,7 +8,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', __dirname + "/views");
 
-app.set('port', 3000);
+app.set('port', 3300);
 
 //rutas
 app.use(require('./routes/rutas'));
