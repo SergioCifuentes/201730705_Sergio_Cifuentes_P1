@@ -1,26 +1,19 @@
 //imports
-
+const path = require('path');
 const express = require('express');
 const app = express();
-const path = require('path');
 
-//rutas
-app.get('/', (req, res) => {
-    res.render('index');
-});
-
-app.get('/perfil', (req, res) => {
-    res.sendFile(__dirname + "/views/perfil.html");
-});
-
-//middleware
-app.use(express.static(path.join(__dirname, 'public')));
 
 //configutacion
 app.set('view engine', 'ejs');
 app.set('views', __dirname + "/views");
 
-app.set('port', 3400);
+app.set('port', 3000);
+
+//rutas
+app.use(require('./routes/rutas'));
+//middleware
+app.use(express.static(path.join(__dirname, 'public')));
 
 //escucha
 app.listen(app.get('port'), () => {
