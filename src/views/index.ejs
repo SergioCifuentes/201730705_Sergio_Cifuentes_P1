@@ -12,22 +12,38 @@
 
 <body>
     <h1 style="text-align: center">Analizador Lexico</h1>
-    <div class="container">
+    <div class="container" style="text-align: center;width: 80%">
 
-        <div class="custom-file" style="width: 25%">
-            <input type="file" class="custom-file-input" onchange="obtenerArchivo(this.files)" id="fileOutput" aria-describedby="inputGroupFileAddon01">
+        <div class="custom-file" style="width: 25%;text-align: left">
+            <input type="file" class="custom-file-input" onchange="obtenerArchivo(this.files)" id="fileOutput"
+                aria-describedby="inputGroupFileAddon01">
             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-        </div>
-        <button  class="btn btn-dark" id="buttonCargar">Analizar</button>
-        <button  class="btn btn-ligth" id="getToken">Get Token</button>
-        <br>
-        <br>
-        <textarea  class="form-control" style="width:40%;display: inline"id="texto1" rows="8"></textarea> &nbsp;&nbsp;&nbsp;
-        <textarea class="form-control"  style="width: 40% ;display: inline"id="resultados" rows="8"></textarea>
 
+        </div>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-dark" id="buttonCargar">Analizar</button>
+        <button class="btn btn-ligth" id="getToken">Get Token</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a style="font-size: 30px;display: inline-block" href="/perfil"> Perfil</a>
     </div>
-    
-    <a href="/perfil"> Perfil</a>
+    <br>
+    <br>
+<div class="container" style="text-align: center;width: 70%;">
+    <textarea style="width: 100%" class="form-control" id="texto1" rows="8"></textarea> &nbsp;&nbsp;&nbsp;
+    <br>
+    <table class="table table-dark" style="width: 35%;display:inline-block;">
+        <thead>
+            <tr>
+                <th scope="col" style="width: 30%">Caracteres</th>
+                <th scope="col" style="width: 80%">Token</th>
+            </tr>
+        </thead>
+        <tbody id="resultados">
+
+        </tbody>
+    </table>
+</div>
+    </div>
+    <br>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/cargador.js"></script>
 </body>

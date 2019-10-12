@@ -10,8 +10,9 @@ router.get('/', (req, res) => {
 
 router.get('/resultado', (req, res) => {
         res.status(200).json({
-            id: resultado
-
+            id:conjunto,
+            token: resultado
+            
     });
 
 });
@@ -19,8 +20,10 @@ router.get('/perfil', (req, res) => {
     res.render('perfil', { max: 15 });
 });
 
-router.post("/automata", (req, res) => { 
-   resultado=s(req.body.lineas);
+router.post("/automata", (req, res) => {
+   palabra = s(req.body.lineas);
+   resultado=palabra[1];
+   conjunto=palabra[0];
     
   });
 

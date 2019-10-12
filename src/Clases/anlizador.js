@@ -1,14 +1,14 @@
 const matriz = [
     //[Letra,Numero,Simbolo,Punto}
     [1, 2, 3, 0],//E0
-    [1, 4, 0, 0],//E1
-    [0, 2, 0, 5],//E2
-    [0, 0, 3, 0],//E3
-    [4, 4, 0, 0],//E4
-    [0, 6, 0, 0],//E5
-    [0, 6, 0, 0]];//E6
+    [1, 4, 0, 0],//E1=Letras
+    [0, 2, 0, 5],//E2=Numeros
+    [0, 0, 3, 0],//E3=Simbolo
+    [4, 4, 0, 0],//E4=Identificador
+    [0, 6, 0, 0],//E5=PosFlotante
+    [0, 6, 0, 0]];//E6=Flotante
 
-const expresionLetra = /^[a-z][A-Z]*/
+const expresionLetra = /^[a-z]|^[A-Z]/
 const expresionNumero = /^[0-9]*$/
 const simbolos = ['+', '-', '*', '/', '%', '=', '>', '<', '(', ')', '{', '}', '"', ';'];
 const palabrasReservadas = ["variable", "entero", "mientras", "hacer", "si", "sino", "decimal", "boolean", "cadena"];
@@ -21,8 +21,7 @@ var caracterDePalabra = 0;
 
 module.exports = function leer(text) {
     var palabra = text.split(/\s+\n*/);
-
-    if(numeroDePalabra>palabra.length){
+    if(numeroDePalabra==palabra.length){
         numeroDePalabra=0;
     }
     if (caracterDePalabra != 0) {
@@ -46,12 +45,11 @@ module.exports = function leer(text) {
             estado = matriz[estado][1];
 
         } else if (comparacionSimbolos(caracter)) {
+            console.log("es simbolo");
             var aux = estado;
             estado = matriz[estado][2];
             if (i == 0 && i < palabraAAnalizar.length - 1) {
                 numeroDePalabra--;
-                console.log(palabraAAnalizar.substr(i+1));
-
                 if (comparacionSimbolos(palabraAAnalizar.substr(i+1))) {
                     
                     if(i==palabraAAnalizar.length - 2){
@@ -64,7 +62,7 @@ module.exports = function leer(text) {
                     return finalizarPalabra(palabraAAnalizar, estado);
                 } else {
                     caracterDePalabra = caracterDePalabra+1;
-                    console.log(palabraAAnalizar.charAt(0)+"sub");
+                    
                     return finalizarPalabra(palabraAAnalizar.charAt(0),estado);
                 }
 
@@ -75,7 +73,6 @@ module.exports = function leer(text) {
             } else {
                 numeroDePalabra--;
                 caracterDePalabra = i;
-                console.log(aux);
                 
                 return finalizarPalabra(palabraAAnalizar.substr(0, i), aux);
             }
@@ -101,11 +98,11 @@ module.exports = function leer(text) {
 
 function finalizarPalabra(palabraAAnalizar, estado) {
     if (estado == 4) {
-        return "Identificador";
+        return [palabraAAnalizar,"Identificador"];
     } else if (estado == 5) {
-        return "Error";
+        return [palabraAAnalizar,"Error"];
     } else if (estado == 6) {
-        return "Flotante"
+        return [palabraAAnalizar,"Flotante"];
     } else {
         return regresar(palabraAAnalizar, estado);
 
@@ -116,34 +113,34 @@ function regresar(palabra, estado) {
 
     switch (estado) {
         case 1:
-        console.log(palabra+" cons");
+        
             for (k = 0; k < palabrasReservadas.length; k++) {
                 if (palabrasReservadas[k] == palabra) {
-                    return "Palabra Reservada";
+                    return [palabra,"Palabra Reservada"] ;
                 }
             }
             if (palabrasBoolean[1] == palabra || palabrasBoolean[0] == palabra) {
-                return "Boolean";
+                return [palabra,"Boolean"];
             } else {
-                return "Identificador";
+                return [palabra,"Identificador"];
             }
         case 2:
-            return "Numero";
+            return [palabra,"Numero"];
         case 3:
-            
             for (k = 0; k < operador.length; k++) {
                 if (operador[k] == palabra) {
-                    return "Simbolo de Operador";
+                    return [palabra,"Simbolo de Operador"];
                 }
             }
             for (k = 0; k < agrupacion.length; k++) {
                 if (agrupacion[k] == palabra) {
-                    return "Simbolo de Agrupacion";
+                    return [palabra,"Simbolo de Agrupacion"];
                 }
             }
             for (k = 0; k < signos.length; k++) {
-                if (agrupacion[k] == palabra) {
-                    return "Signo";
+                if (signos[k] == palabra) {
+                    
+                    return [palabra,"Signo"];
                 }
             }
     }

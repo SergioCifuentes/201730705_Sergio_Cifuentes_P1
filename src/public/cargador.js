@@ -21,7 +21,7 @@ const sendData = () => {
 const getData = () => {
     axios.get(url).then(response => {
         console.log("hola");
-        getText2.innerHTML = getText2.innerHTML  + response.data.id +" ";
+        getText2.innerHTML = getText2.innerHTML  +"<tr> <td>"+response.data.id+"</td>  <td>"+response.data.token+"</td></tr> ";
     })
         .catch(error => {
             console.log(error);
@@ -33,9 +33,9 @@ const getData = () => {
 function obtenerArchivo(files) {
     var file = files[0];
     var reader = new FileReader();
-    reader.onload = function(e) {
-      var output = document.getElementById("fileOutput");
-      output.textContent = e.target.result;
+        reader.onload = function(e) {
+        var output = document.getElementById("fileOutput");
+        output.textContent = e.target.result;
       var string = output.textContent;
       
       var elementotxt = document.getElementById('texto1');
