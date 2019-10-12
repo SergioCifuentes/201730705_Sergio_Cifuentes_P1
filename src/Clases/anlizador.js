@@ -10,12 +10,13 @@ const matriz = [
 
 const expresionLetra = /^[a-z]|^[A-Z]/
 const expresionNumero = /^[0-9]*$/
-const simbolos = ['+', '-', '*', '/', '%', '=', '>', '<', '(', ')', '{', '}', '"', ';'];
+const simbolos = ['+', '-', '*', '/', '%', '=', '>', '<', '(', ')', '{', '}', '"', ';','“','”'];
 const palabrasReservadas = ["variable", "entero", "mientras", "hacer", "si", "sino", "decimal", "boolean", "cadena"];
 const palabrasBoolean = ["VERDADERO", "FALSO"];
 const operador = ['+', '-', '*', '/', '%', '=', '>', '<', '>=', '<=', '=='];
+const simbolosCompuestos=['>=', '<=', '=='];
 const agrupacion = ['(', ')', '{', '}'];
-const signos = ['"', ';'];
+const signos = ['"', ';','“','”'];
 var numeroDePalabra = 0;
 var caracterDePalabra = 0;
 
@@ -33,7 +34,10 @@ module.exports = function leer(text) {
     
     numeroDePalabra++;
     var estado;
+    console.log(palabraAAnalizar+"pala");
+        console.log(caracterDePalabra+"cala");
     for (i = 0; i < palabraAAnalizar.length; i++) {
+        
         var caracter = palabraAAnalizar[i];
         if (i == 0) {
             estado = 0;
@@ -45,22 +49,30 @@ module.exports = function leer(text) {
             estado = matriz[estado][1];
 
         } else if (comparacionSimbolos(caracter)) {
-            console.log("es simbolo");
+            
             var aux = estado;
             estado = matriz[estado][2];
             if (i == 0 && i < palabraAAnalizar.length - 1) {
                 numeroDePalabra--;
                 if (comparacionSimbolos(palabraAAnalizar.substr(i+1))) {
-                    
-                    if(i==palabraAAnalizar.length - 2){
-                        numeroDePalabra++;
-                        caracterDePalabra=0;
+                    console.log(caracter+palabraAAnalizar.substr(i+1));
+                    if(comparacionSimbolosCompuestos(caracter+palabraAAnalizar.substr(i+1))){
+                        if(i==palabraAAnalizar.length - 2){
+                            numeroDePalabra++;
+                            caracterDePalabra=0;
+                        }else{
+                            caracterDePalabra=i+2;
+                        }
+                        palabraAAnalizar = caracter + "" + palabraAAnalizar[i + 1];
+                        return finalizarPalabra(palabraAAnalizar, estado);
                     }else{
-                        caracterDePalabra=i+2;
+                        caracterDePalabra = caracterDePalabra+1;
+                    
+                    return finalizarPalabra(palabraAAnalizar.charAt(0),estado);
                     }
-                    palabraAAnalizar = caracter + "" + palabraAAnalizar[i + 1];
-                    return finalizarPalabra(palabraAAnalizar, estado);
+                    
                 } else {
+                    console.log("log"+palabraAAnalizar.charAt(0))
                     caracterDePalabra = caracterDePalabra+1;
                     
                     return finalizarPalabra(palabraAAnalizar.charAt(0),estado);
@@ -71,8 +83,9 @@ module.exports = function leer(text) {
                 caracterDePalabra=0;
                 return finalizarPalabra(palabraAAnalizar, estado);
             } else {
+                console.log(caracterDePalabra+"cccc")
                 numeroDePalabra--;
-                caracterDePalabra = i;
+                caracterDePalabra = caracterDePalabra+i;
                 
                 return finalizarPalabra(palabraAAnalizar.substr(0, i), aux);
             }
@@ -155,4 +168,11 @@ function comparacionSimbolos(texto) {
     }
     return false;
 }
-
+function comparacionSimbolosCompuestos(texto) {
+    for (l = 0; l < simbolosCompuestos.length; l++) {
+        if (simbolosCompuestos[l] === texto) {
+            return true;
+        }
+    }
+    return false;
+}
