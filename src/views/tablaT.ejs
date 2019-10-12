@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+</head>
+
+<body>
+    <h1>Tabla De Transiciones</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Estado</th>
+                <th scope="col">Letra</th>
+                <th scope="col">Numero</th>
+                <th scope="col">Simbolo</th>
+                <th scope="col">Punto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">E0</th>
+                <td>E1</td>
+                <td>E2</td>
+                <td>E3</td>
+                <td>--</td>
+            </tr>
+            <tr>
+                <th scope="row">E1</th>
+                <td>E1</td>
+                <td>E4</td>
+                <td>--</td>
+                <td>--</td>
+            </tr>
+            <tr>
+                <th scope="row">E2</th>
+                <td>--</td>
+                <td>E2</td>
+                <td>--</td>
+                <td>E5</td>
+            </tr>
+            <tr>
+                <th scope="row">E3</th>
+                <td>--</td>
+                <td>--</td>
+                <td>E3</td>
+                <td>--</td>
+            </tr>
+            <tr>
+                <th scope="row">E4</th>
+                <td>E4</td>
+                <td>E4</td>
+                <td>--</td>
+                <td>--</td>
+            </tr>
+            <tr>
+                <th scope="row">E5</th>
+                <td>--</td>
+                <td>E6</td>
+                <td>--</td>
+                <td>--</td>
+            </tr>
+            <tr>
+                <th scope="row">E6</th>
+                <td>--</td>
+                <td>E6</td>
+                <td>--</td>
+                <td>--</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div >
+        <p>E1=Letras &nbsp;&nbsp;&nbsp; E2=Numeros &nbsp;&nbsp;&nbsp; E3=Simbolo&nbsp;&nbsp;&nbsp;
+             E4=Identificador &nbsp;&nbsp;&nbsp; E5=Pos-Flotante &nbsp;&nbsp;&nbsp;E6=Flotante </p>
+    </div>
+</body>
+
+</html>

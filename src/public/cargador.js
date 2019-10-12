@@ -1,6 +1,5 @@
 const getButton = document.querySelector("#buttonCargar");
 const getButtonToken = document.querySelector("#getToken");
-const Reset = document.querySelector("#Reset");
 const getText = document.querySelector("#texto1");
 const getText2= document.getElementById("resultados");
 

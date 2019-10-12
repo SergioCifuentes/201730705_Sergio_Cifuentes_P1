@@ -4,9 +4,14 @@ router.use(express.json());
 const path = require('path');
 const s= require("../Clases/anlizador");
 var resultado;
+
+
+
+
 router.get('/', (req, res) => {
     res.render('index');
 });
+
 
 router.get('/resultado', (req, res) => {
         res.status(200).json({
@@ -19,6 +24,11 @@ router.get('/resultado', (req, res) => {
 router.get('/perfil', (req, res) => {
     res.render('perfil', { max: 15 });
 });
+
+router.get('/transicion', (req, res) => {
+    res.render('tablaT', { max: 15 });
+}); 
+
 
 router.post("/automata", (req, res) => {
    palabra = s(req.body.lineas);
